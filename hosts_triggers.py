@@ -3,7 +3,7 @@ import apizabbix
 api = apizabbix.connect()
 
 host = api.host.get(
-    output='extend',
+    output={'name': 'name'},
     selectTriggers={
     'name': 'description'
     }
