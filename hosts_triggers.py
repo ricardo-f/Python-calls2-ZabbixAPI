@@ -9,7 +9,9 @@ host = api.host.get(
     }
 )
 
-from pprint import pprint
-pprint(host)
+for host in host:
+    triggers=host['triggers']
+    for trigger in triggers:
+        print('Name:' + host['name'] + 'Alarme: ' + trigger['description'])
 
 api.user.logout()
