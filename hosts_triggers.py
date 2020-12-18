@@ -1,4 +1,5 @@
 import apizabbix
+import json
 
 api = apizabbix.connect()
 
@@ -9,9 +10,16 @@ host = api.host.get(
     }
 )
 
+data=[]
+
 for host in host:
     triggers=host['triggers']
     for trigger in triggers:
-        print('Name:' + host['name'] + 'Alarme: ' + trigger['description'])
+        data.append({"name": host['name'],  "description": trigger['description']})
+
+x = data
+y = json.dumps(x)
+
+print(y)
 
 api.user.logout()
