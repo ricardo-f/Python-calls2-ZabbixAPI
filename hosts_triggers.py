@@ -10,16 +10,9 @@ host = api.host.get(
     }
 )
 
-data=[]
+raw_output = host
+parsed_to_json = json.dumps(raw_output)
 
-for host in host:
-    triggers=host['triggers']
-    for trigger in triggers:
-        data.append({"name": host['name'],  "description": trigger['description']})
-
-x = data
-y = json.dumps(x)
-
-print(y)
+print(parsed_to_json)
 
 api.user.logout()
